@@ -12,7 +12,8 @@
     {% endif %}
 </head>
 <body>
-      <div> 
+  <br>       
+      <div> &nbsp&nbsp&nbsp   
         <a class="btn btn-info" href="{{ url_for('index') }}">Home</a>
         <a class="btn btn-info" href="{{ url_for('add_asset') }}">Add Asset</a>
         <a class="btn btn-info" href="{{ url_for('add_task_form') }}">Add Task</a>
@@ -20,6 +21,7 @@
         <a class="btn btn-info" href="{{ url_for('allocate_task_form') }}">Allocate Task</a>
         <a class="btn btn-info" href="{{ url_for('view_assets') }}">View All Assets</a>
       </div>
+      <br>
       {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
