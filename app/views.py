@@ -48,3 +48,37 @@ def insert_worker(name, email, number):
         db.session.commit()
         flashmsg = "New worker added successfully!"
     return flashmsg
+
+
+# Helper function to convert HTML local-datetime to Python timestamp for the database
+def convertTime(htmltime):
+    date_new = htmltime.replace('T', '-').replace(':', '-').split('-')
+    date_new = [int(v) for v in date_new]
+    date_out = datetime(*date_new)
+    return date_out
+
+
+def assign_task(assetId, taskId, workerId, taskToBePerformedBy):
+    task = Task.query.filter_by(id=taskId).first()
+    if(task):
+        flashmsg = "Invalid Task ID!"
+        return flashmsg
+
+    worker = Worker.query.filter_by(id=workerId).first()
+    if(worker):
+        flashmsg = "Invalid Worker ID!"
+        return flashmsg
+
+    asset = Asset.query.filter_by(id=assetId).first()
+    if(asset):
+        flashmsg = "Invalid Asset ID!"
+        return flashmsg
+    # If none of the above, then
+    task.timeofalloc = datetime.utcnow()
+    task.taskToBePerformedBy = convertTime(taskToBePerformedBy)
+    task.workerId = workerId
+    task.assetId = assetId
+    flashmsg = "{} {} successfully assigned to {}".format(
+        task.name, asset.name, worker.name)
+    print(flashmsg)
+    return flashmsg

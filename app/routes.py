@@ -148,13 +148,15 @@ def allocate_task_form():
     return render_template('allocate_task_form.html')
 
 
-# # Allocate Task API
-# @app.route('/allocate_task', methods=["POST"])
-# def allocate_task():
-#     data = request.form
-#     assetId = data['assetId']
-#     taskId = data['taskId']
-#     workerId = data['workerId']
-#     taskToBePerformedBy = data['taskToBePerformedBy']
+# Allocate Task API
+@app.route('/allocate_task', methods=["POST"])
+def allocate_task():
+    data = request.form
+    assetId = data['assetId']
+    taskId = data['taskId']
+    workerId = data['workerId']
+    taskToBePerformedBy = data['taskToBePerformedBy']
 
-#     message = assign_task(assetId, taskId, workerId, taskToBePerformedBy)
+    message = assign_task(assetId, taskId, workerId, taskToBePerformedBy)
+    flash(message)
+    return redirect(url_for('allocate_task_form'))
