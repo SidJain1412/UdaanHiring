@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="http://icons.iconarchive.com/icons/pauloruberto/custom-round-yosemite/256/Python-icon.png" alt="rocket_contact"/>
+        </div>
+        <form id="data_form" method="post" action="/add_worker">
+            <h3>Enter Worker details</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Name</h4>
+                    <br>
+                    <div class="form-group">
+                        <input name="name" class="form-control"placeholder= "Worker Name*" required/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Email</h4>
+                    <br>
+                    <div class="form-group">
+                        <input name="email" class="form-control"placeholder= "Worker Email*" required/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Phone Number</h4>
+                    <br>
+                    <div class="form-group">
+                        <input name="number" class="form-control"placeholder= "Worker Phone Number*" required/>
+                    </div>
+                </div>
+            </div>   
+            <div class="col-md-12 submit" >
+                    <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btn btn-primary" value="Submit"/>
+                    </div>
+            </div>         
+        </form>
+    </div>
+
+{% endblock %}

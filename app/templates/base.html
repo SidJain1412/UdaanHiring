@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="static/css/styles.css">
+    {% if title %}
+        <title>{{ title }} - Housekeeping</title>
+    {% else %}
+        <title>Welcome to Housekeeping</title>
+    {% endif %}
+</head>
+<body>
+      <div> 
+        <a class="btn btn-info" href="{{ url_for('index') }}">Home</a>
+        <a class="btn btn-info" href="{{ url_for('add_asset') }}">Add Asset</a>
+        <a class="btn btn-info" href="{{ url_for('add_task_form') }}">Add Task</a>
+        <a class="btn btn-info" href="{{ url_for('add_worker_form') }}">Add Worker</a>
+        <a class="btn btn-info" href="{{ url_for('view_assets') }}">View All Assets</a>
+      </div>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+               <strong>{{message}}</strong>
+            </div>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+</body>
+</html>

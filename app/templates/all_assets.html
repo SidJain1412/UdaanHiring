@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if assets.error %}
+		<h1>No assets currently. Please add some.</h1>
+	{% else %}
+	<h1>All your assets are listed below</h1><br>
+	<div>
+
+		{% for asset in assets %}
+			<div>
+				<li>{{asset.name}}: {{asset.count}}</li>
+			</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+{% endblock %}
