@@ -149,6 +149,9 @@ def allocate_task_form():
 
 
 # Allocate Task API
+# Post API
+# Takes 'assetId', 'taskId', 'workerId' and 'taskToBePerformedBy' as input
+# Adds details to database
 @app.route('/allocate_task', methods=["POST"])
 def allocate_task():
     data = request.form
