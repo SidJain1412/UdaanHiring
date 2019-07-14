@@ -83,5 +83,6 @@ def assign_task(assetId, taskId, workerId, taskToBePerformedBy):
     task.assetId = assetId
     flashmsg = "{} {} successfully assigned to {}. Complete by: {}".format(
         task.name, asset.name, worker.name, convertedtime)
+    db.session.commit()
     print(flashmsg)
     return flashmsg

@@ -48,11 +48,7 @@ def add_asset_data():
 @app.route('/assets/all', methods=['GET'])
 def all_assets():
     assets = Asset.query.all()
-    try:
-        foo = assets.count()
-    except:
-        foo = len(assets)
-    if(foo > 0):
+    if(len(assets)):
         res = []
         for a in assets:
             x = {}
@@ -74,14 +70,15 @@ def view_assets():
 
 # API to get tasks for a certain worker
 # If no tasks then return error.
-@app.route('/get_tasks_for_worker/<int:workerId>', methods=["GET"])
+@app.route('/get_tasks_for_worker/<workerId>', methods=["GET"])
 def get_tasks_for_worker(workerId):
+    print(Worker.query.all()[0].id)
+    print(workerId)
+    print(Task.query.all()[0].workerId)
+    print(Task.query.filter_by(workerId=workerId).first())
     tasks = Task.query.filter_by(workerId=workerId)
-    try:
-        foo = tasks.count()
-    except:
-        foo = len(tasks)
-    if(foo > 0):
+    print(tasks)
+    if(tasks):
         res = []
         for t in tasks:
             x = {}
@@ -148,9 +145,10 @@ def allocate_task_form():
     return render_template('allocate_task_form.html')
 
 
-# Allocate Task API
+# ALLOCATE TASK API:
 # Post API
 # Takes 'assetId', 'taskId', 'workerId' and 'taskToBePerformedBy' as input
+# through form-data
 # Adds details to database
 @app.route('/allocate_task', methods=["POST"])
 def allocate_task():

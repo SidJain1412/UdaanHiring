@@ -35,4 +35,4 @@ class Worker(db.Model):
     tasks = db.relationship('Task', backref='AssignedWorker', lazy='dynamic')
 
     def __repr__(self):
-        return '<Worked {}>'.format(self.name)
+        return '<Worker {}>'.format(self.name)
