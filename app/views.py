@@ -60,25 +60,28 @@ def convertTime(htmltime):
 
 def assign_task(assetId, taskId, workerId, taskToBePerformedBy):
     task = Task.query.filter_by(id=taskId).first()
-    if(task):
+    print('filtered', task)
+    print(Task.query.all())
+    if(not task):
         flashmsg = "Invalid Task ID!"
         return flashmsg
 
     worker = Worker.query.filter_by(id=workerId).first()
-    if(worker):
+    if(not worker):
         flashmsg = "Invalid Worker ID!"
         return flashmsg
 
     asset = Asset.query.filter_by(id=assetId).first()
-    if(asset):
+    if(not asset):
         flashmsg = "Invalid Asset ID!"
         return flashmsg
     # If none of the above, then
+    convertedtime = convertTime(taskToBePerformedBy)
     task.timeofalloc = datetime.utcnow()
-    task.taskToBePerformedBy = convertTime(taskToBePerformedBy)
+    task.taskToBePerformedBy = convertedtime
     task.workerId = workerId
     task.assetId = assetId
-    flashmsg = "{} {} successfully assigned to {}".format(
-        task.name, asset.name, worker.name)
+    flashmsg = "{} {} successfully assigned to {}. Complete by: {}".format(
+        task.name, asset.name, worker.name, convertedtime)
     print(flashmsg)
     return flashmsg
