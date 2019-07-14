@@ -17,6 +17,7 @@
         <a class="btn btn-info" href="{{ url_for('add_asset') }}">Add Asset</a>
         <a class="btn btn-info" href="{{ url_for('add_task_form') }}">Add Task</a>
         <a class="btn btn-info" href="{{ url_for('add_worker_form') }}">Add Worker</a>
+        <a class="btn btn-info" href="{{ url_for('allocate_task_form') }}">Allocate Task</a>
         <a class="btn btn-info" href="{{ url_for('view_assets') }}">View All Assets</a>
       </div>
       {% with messages = get_flashed_messages() %}

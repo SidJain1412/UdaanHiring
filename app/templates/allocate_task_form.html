@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="http://icons.iconarchive.com/icons/pauloruberto/custom-round-yosemite/256/Python-icon.png" alt="rocket_contact"/>
+        </div>
+        <form id="data_form" method="post" action="/alocate_task">
+            <h3>Enter Allocation Details</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Asset ID</h5>
+                    <br>
+                    <div class="form-group">
+                        <input name="assetId" class="form-control"placeholder= "Asset ID*" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Task ID</h5>
+                    <br>
+                    <div class="form-group">
+                        <input name="taskId" class="form-control"placeholder= "Task ID*" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Worker ID</h5>
+                    <br>
+                    <div class="form-group">
+                        <input name="workerId" class="form-control"placeholder= "Worker ID*" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Task to be performed By</h5>
+                    <br>
+                    <div class="form-group">
+                        <input type="datetime-local" id="meeting-time"
+                            name="meeting-time" value="2018-06-12T19:30"
+                            min="2018-06-07T00:00" max="2099-12-14T00:00">
+                    </div>
+                </div>
+            </div>   
+            <div class="col-md-12 submit" >
+                    <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btn btn-primary" value="Submit"/>
+                    </div>
+            </div>         
+        </form>
+    </div>
+
+{% endblock %}
