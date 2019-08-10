@@ -48,15 +48,15 @@ API List:
   + Adds worker name, email, and mobile number
   + Validates Email ID
   
-`127.0.0.1:5000/assets/all`:
+- `127.0.0.1:5000/assets/all`:
   + Method="GET"
   + Returns JSON containing all assets (names and counts)
   
-`127.0.0.1:5000/add_task`:
+- `127.0.0.1:5000/add_task`:
   + Method="POST"
   + Adds a task
   + Adds its name and frequency of performing (validating frequency)
   
-`127.0.0.1:5000/get_tasks_for_workers/<worker_id>`:
+- `127.0.0.1:5000/get_tasks_for_workers/<worker_id>`:
   + Method="GET"
   + Returns JSON of all tasks assigned to a worker
